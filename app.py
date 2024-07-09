@@ -101,7 +101,7 @@ def summarize_image(image_url, system_prompt):
             {
                 "role": "user",
                 "content": [
-                    {"type": "text", "text": "You are an assistant designed to identify the presence of {system_prompt} in images. Do you see {system_prompt} in this image? Reply with a Yes or No answer only."},
+                    {"type": "text", "text": f"You are an assistant designed to identify the presence of {system_prompt} in images. Do you see {system_prompt} in this image? Reply with a Yes or No answer only."},
                     {
                         "type": "image_url",
                         "image_url": {
@@ -114,7 +114,8 @@ def summarize_image(image_url, system_prompt):
         "max_tokens": 300
     }
 
-    print(f"Sending request to OpenAI API for image URL {image_url}...")  # Logging
+    print(f"Sending request to OpenAI API for image URL {image_url}... ")  # Logging
+    print(f"Prompt: {payload}") #show prompt in log
     response = openai.chat.completions.create(**payload)
     
     description = response.choices[0].message.content
