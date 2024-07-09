@@ -1,0 +1,6 @@
+ID,Date,Time,Latitude,Longitude,Detection (ppm),Detection Level
+1,12/16/23,06:00:00 AM,35.070718,-95.707,434.2,Detection of big concentration
+2,12/16/23,06:05:00 AM,35.071268,-95.707028,404.14,Detection of medium concentration
+3,12/16/23,06:10:00 AM,35.071818,-95.707031,110.74,Detection of small concentration
+4,12/16/23,06:15:00 AM,35.072368,-95.707016,421.45,Detection of big concentration
+5,12/16/23,06:20:00 AM,35.072918,-95.706999,176.33,Detection of big concentration

@@ -1,0 +1,14 @@
+ID,Date,Time,Latitude,Longitude,Detection (ppm),Detection Level
+1,12/16/23,06:00:00 AM,35.55407, -92.29872,Detection of big concentration
+2,12/16/23,06:05:00 AM,35.54314, -92.30743,404.14,Detection of medium concentration
+3,12/16/23,06:10:00 AM,35.54730, -92.29971,110.74,Detection of small concentration
+3,12/16/23,06:10:00 AM,35.54721, -92.31036,110.74,Detection of small concentration
+3,12/16/23,06:10:00 AM,35.54698, -92.31541,110.74,Detection of small concentration
+3,12/16/23,06:10:00 AM,35.54730, -92.32,110.74,Detection of small concentration
+3,12/16/23,06:10:00 AM,35.54730, -92.325,110.74,Detection of small concentration
+3,12/16/23,06:10:00 AM,35.54730, -92.340,110.74,Detection of small concentration
+3,12/16/23,06:10:00 AM,35.54730, -92.345,110.74,Detection of small concentration
+3,12/16/23,06:10:00 AM,35.54730, -92.350,110.74,Detection of small concentration
+3,12/16/23,06:10:00 AM,35.54730, -92.355,110.74,Detection of small concentration
+3,12/16/23,06:10:00 AM,35.54730, -92.360,110.74,Detection of small concentration
+3,12/16/23,06:10:00 AM,35.54730, -92.365,110.74,Detection of small concentration

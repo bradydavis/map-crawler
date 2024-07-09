@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geographic Image Analyzer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .thumbnail img {
+            max-width: 150px;
+            max-height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Upload a locations .csv to analzye the imagery in the areas</h1>
+        <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data" class="mb-4">
+            <div class="form-group">
+                <input type="file" name="file" accept=".csv" class="form-control-file">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+        <div id="table-container"></div>
+        <a id="downloadLink" href="#" class="btn btn-success mt-4" style="display:none;">Download Summary CSV</a>
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert(data.message);
+                    displaySummaryTable(data.summaries);
+                    document.getElementById('downloadLink').style.display = 'block';
+                    document.getElementById('downloadLink').href = '/download_summary';
+                } else if (data.error) {
+                    alert(data.error);
+                }
+            });
+        });
+
+        function displaySummaryTable(summaries) {
+            const tableContainer = document.getElementById('table-container');
+            tableContainer.innerHTML = '';
+            const table = document.createElement('table');
+            table.className = 'table table-bordered';
+            table.id = 'summary-table';
+            const thead = document.createElement('thead');
+            const tbody = document.createElement('tbody');
+            const headerRow = document.createElement('tr');
+            const headers = ['Index', 'Summary', 'Image'];
+            headers.forEach(headerText => {
+                const th = document.createElement('th');
+                th.textContent = headerText;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            summaries.forEach(item => {
+                const row = document.createElement('tr');
+                const indexCell = document.createElement('td');
+                indexCell.textContent = item.index;
+                const summaryCell = document.createElement('td');
+                summaryCell.textContent = item.summary;
+                
+                const imgCell = document.createElement('td');
+                const img = document.createElement('img');
+                img.src = item.image_url;
+                imgCell.appendChild(img);
+                row.appendChild(indexCell);
+                row.appendChild(summaryCell);
+                row.appendChild(imgCell);
+                tbody.appendChild(row);
+            });
+            table.appendChild(thead);
+            table.appendChild(tbody);
+            tableContainer.appendChild(table);
+        }
+    </script>
+</body>
+</html>
