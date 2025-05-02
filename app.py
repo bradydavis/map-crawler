@@ -16,7 +16,7 @@ if not os.path.exists(MAP_TILES_FOLDER):
     os.makedirs(MAP_TILES_FOLDER)
 
 # Initialize OpenAI client
-openai.api_key = 'sk-proj-ZWLOyqh1DVmnzqipKxiIT3BlbkFJEGx2Z4wRp7BYqVHnMZgf'
+openai.api_key = ''
 
 @app.route('/')
 def index():
@@ -97,7 +97,7 @@ def lat_lon_to_tile(lat, lon, zoom):
     return x_tile, y_tile
 
 def get_map_tile_url(x_tile, y_tile, zoom):
-    access_token = 'pk.eyJ1IjoiYnJhZHlkYXZpcyIsImEiOiJjbHkzaDAyNTIwOGY0MmpwdWY4dGphejBiIn0.pILDooiniqy75LWz5C7yMQ'  # Ensure this is your actual Mapbox access token
+    access_token = ''  # Ensure this is your actual Mapbox access token
     return f'https://api.mapbox.com/v4/mapbox.satellite/{zoom}/{x_tile}/{y_tile}@2x.png?access_token={access_token}'
 
 def download_tile(url, filename):
